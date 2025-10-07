@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang="en-CA">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="Example" content="Meta and Head Example">
+    <meta name="Description" content="This is an example page to demonstrate the use of the head and meta tags in HTML.">
+    <meta name="Author" content="Bohdan Pawluk">
+    <meta name="Keywords" content="HTML, meta tags, head tag, web development, example">
+    <title>Meta and Head Example</title>
+
+    <!--the style section is used to format the page style-->
+    <style>
+        h1 { color : blue; font-style :calibri; font-size:largest; }
+        p { color : brown; font-style: italic; }
+        
+    </style>
+
+
+    <!--this script generates an alert on the page when the tag is clicked-->
+    <script>
+        function callAlert(aVar) {
+            // Log the clicked element's content
+            console.log("you clicked: " + aVar.innerHTML);
+            // Show an alert with the clicked element's content to a more user-friendly message
+            // alert is a message box that pops up on the screen
+            alert("This is an alert that you clicked: " + aVar.innerHTML);
+        }
+    </script>
+
+</head>
+
+<body>
+    <h1 onclick="callAlert(this)"> Welcome to the Meta and Head Example</h1>
+    <p onClick="callAlert(this)">This is a simple example to demonstrate the use of the "head" and "meta" tags in HTML.</p>
+    <p Lang="fr-CA" onClick="callAlert(this)"> Voici un exemple de texte en français.</p>
+    <p Lang="uk-UA" onClick="callAlert(this)"> Ось приклад тексту українською мовою.</p>
+    <p Lang="CH" onClick="callAlert(this)"> 这是中文文本的示例。</p>
+    <p Lang="pa-IN" onClick="callAlert(this)"> यह पंजाबी भाषा में एक उदाहरण है।</p>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer>
+
+    <p>Checkout my <a href="../index.html">Home Page</a></p>
+    <p>&copy; 2025 My Website</p>
+</footer>
+
+
+
+
+</html>
