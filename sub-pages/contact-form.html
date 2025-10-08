@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <title>Contact Form</title>
+  </head>
+
+  <body>
+    <h1>Contact Form</h1>
+    <!-- Form to collect user information and send it via email -->
+    <form name="eForm" method="post" action="mailto:Bohdan.Pawluk@icloud.com" enctype="text/plain" onsubmit="closeFormPage(event)">
+      <!-- Contact input fields -->
+      Name:
+       <br>
+       <input type="text" name="firstName" placeholder="Enter your first name" size="30">
+       <input type="text" name="lastName" placeholder="Enter your last name" size="30">
+       <input type="text" name="companyName" placeholder="Enter your company name" size="30">
+       <input type="email" name="email" placeholder="Enter your email" size="30">
+       <input type="tel" name="phone" placeholder="Enter your phone number" size="30">
+       <br>
+       
+       <br>
+       <!-- Dropdown menu for favorite car -->
+       Business Life Cycle Stage:
+       <select name="businessStage">
+         <option value="startup">Startup</option>
+         <option value="growth">Growth</option>
+         <option value="established">Established</option>   
+       </select>
+       <br>
+       <br>
+       <!-- Comments text area -->
+       Comments:
+       <br>
+       <textarea name="comments" rows="10" cols="50"></textarea>
+       <br>
+       <br>
+       <!-- Checkbox group for website services -->
+       Service Required:
+       <br>
+       <input type="radio" name="website" value="new" checked> I need a new website
+       <input type="radio" name="website" value="update"> I need a website update
+       <br>
+       <br>
+       <!-- Radio button group for additional services -->
+       Additional Services:
+       <br>
+       <input type="checkbox" name="additionalServices" value="seo"> SEO Optimization
+       <input type="checkbox" name="additionalServices" value="content"> Content Creation
+       <input type="checkbox" name="additionalServices" value="ads"> Online Advertising
+       <input type="checkbox" name="additionalServices" value="consulting"> Consulting
+       <input type="checkbox" name="additionalServices" value="maintenance"> Website Maintenance
+       <input type="checkbox" name="additionalServices" value="ai"> Ai (Artificial Intelligence) Integration
+       <br>
+       <br>
+       <!-- Submit button -->
+       Finnish and Submit the Form:
+       <br>
+       <input type="submit" value="SUBMIT">
+       <!-- close the form page -->
+     </form>   
+
+      <script>
+        function closeFormPage(event) {
+          event.preventDefault(); // Prevent the default form submission
+          alert("Form submitted! The page will now close.");
+          window.close(); // Attempt to close the window
+        }
+      </script>
+
+   </body>
+
+<footer>
+    <p>Checkout my <a href="../index.html">Home Page</a></p>
+    <p>&copy; 2025 My Website</p>
+  </footer>
+
+</html>
