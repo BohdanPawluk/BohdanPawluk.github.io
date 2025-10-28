@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <!-- Replace this Google Fonts link with the one from the preview you are testing -->
+  <!-- <link id="gf" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <title>Safari Font Load Quick Test</title>
+  <style>
+    html,body{height:100vh;margin:0;background:#0f1720;color:#e6eef8;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
+    .container{display:flex;height:100vh}
+    .sidebar{width:350px;background:#1a2332;border-right:1px solid #2a3441;overflow-y:auto;padding:20px;box-sizing:border-box}
+    .main{flex:1;display:flex;align-items:center;justify-content:center;padding:28px}
+    .wrap{max-width:980px}
+    h1{margin:0 0 14px 0;font-weight:400;color:#9fb0c8;font-size:2.4vw}
+    .sample{font-size:4vw;line-height:1;font-family:"Roboto",system-ui,-apple-system,Segoe UI,Arial;color:#bfcfe0;transition:all .3s ease}
+    .meta{margin-top:12px;color:#99aabf}
+    #overlay{position:fixed;left:18px;bottom:18px;background:rgba(4,8,12,.9);color:#dff; padding:10px 12px;border-radius:8px;font-family:monospace;font-size:13px;box-shadow:0 8px 24px rgba(0,0,0,.6)}
+    .loaded .sample{color:#fff}
+    .muted{color:#7f98b0}
+    
+    /* Font Browser Styles */
+    .font-browser h2{color:#9fb0c8;margin:0 0 16px 0;font-size:18px}
+    .search-box{width:100%;padding:10px;margin-bottom:16px;background:#0f1720;border:1px solid #2a3441;border-radius:4px;color:#e6eef8;font-size:14px}
+    .search-box:focus{outline:none;border-color:#4a90e2}
+    .font-list{list-style:none;padding:0;margin:0}
+    .font-item{padding:12px;margin-bottom:8px;background:#233044;border-radius:6px;cursor:pointer;border:2px solid transparent;transition:all .2s ease}
+    .font-item:hover{background:#2a3441;border-color:#4a90e2}
+    .font-item.active{border-color:#4a90e2;background:#2a3441}
+    .font-name{font-weight:500;color:#e6eef8;margin-bottom:4px}
+    .font-preview{font-size:1.6vw;color:#99aabf;font-family:inherit}
+    .font-category{font-size:11px;color:#7f98b0;text-transform:uppercase;letter-spacing:0.5px}
+    .loading{text-align:center;color:#99aabf;padding:20px}
+    .current-font{background:#1a2332;padding:12px;border-radius:6px;margin-bottom:20px;border:1px solid #2a3441}
+    .current-font-name{color:#4a90e2;font-weight:500;margin-bottom:4px}
+    .current-font-url{font-size:11px;color:#7f98b0;word-break:break-all;font-family:monospace}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <div class="font-browser">
+        <h2>Google Fonts Browser</h2>
+        
+        <div class="current-font">
+          <div class="current-font-name" id="currentFontName">Roboto</div>
+          <div class="current-font-url" id="currentFontUrl">https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap</div>
+        </div>
+        
+        <input type="text" class="search-box" id="searchBox" placeholder="Search fonts...">
+        
+        <div class="loading" id="loading">Loading popular fonts...</div>
+        <ul class="font-list" id="fontList" style="display:none"></ul>
+      </div>
+    </div>
+    
+    <div class="main">
+      <div class="wrap" id="page">
+        <h1>Safari Font Load Tester with Dynamic Font Selection</h1>
+        <div class="sample" id="sample">The quick brown fox jumps over the lazy dog</div>
+        <div class="meta muted">Click a font in the sidebar to test it. Open Web Inspector (Option-⌘-I) to see loading metrics.</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="overlay">font status: <span id="status">waiting…</span></div></body>
+
+  <script>
+    // Global variables
+    let currentFontName = 'Roboto';
+    let currentFontLink = null;
+    let popularFonts = [];
+    let filteredFonts = [];
+    
+    // DOM elements
+    const status = document.getElementById('status');
+    const page = document.getElementById('page');
+    const sample = document.getElementById('sample');
+    const fontList = document.getElementById('fontList');
+    const searchBox = document.getElementById('searchBox');
+    const loading = document.getElementById('loading');
+    const currentFontNameEl = document.getElementById('currentFontName');
+    const currentFontUrlEl = document.getElementById('currentFontUrl');
+
+    // Popular Google Fonts list (manually curated for performance)
+    const popularGoogleFonts = [
+      { family: 'Roboto', category: 'sans-serif' },
+      { family: 'Open Sans', category: 'sans-serif' },
+      { family: 'Lato', category: 'sans-serif' },
+      { family: 'Montserrat', category: 'sans-serif' },
+      { family: 'Roboto Condensed', category: 'sans-serif' },
+      { family: 'Source Sans Pro', category: 'sans-serif' },
+      { family: 'Oswald', category: 'sans-serif' },
+      { family: 'Raleway', category: 'sans-serif' },
+      { family: 'PT Sans', category: 'sans-serif' },
+      { family: 'Roboto Slab', category: 'serif' },
+      { family: 'Merriweather', category: 'serif' },
+      { family: 'Playfair Display', category: 'serif' },
+      { family: 'Lora', category: 'serif' },
+      { family: 'PT Serif', category: 'serif' },
+      { family: 'Crimson Text', category: 'serif' },
+      { family: 'Libre Baskerville', category: 'serif' },
+      { family: 'Roboto Mono', category: 'monospace' },
+      { family: 'Source Code Pro', category: 'monospace' },
+      { family: 'Inconsolata', category: 'monospace' },
+      { family: 'Ubuntu Mono', category: 'monospace' },
+      { family: 'Dancing Script', category: 'handwriting' },
+      { family: 'Pacifico', category: 'handwriting' },
+      { family: 'Lobster', category: 'display' },
+      { family: 'Comfortaa', category: 'display' },
+      { family: 'Righteous', category: 'display' }
+    ];
+
+    // Font testing functions
+    function testFont(fontName) {
+      const t0 = performance.now();
+      status.textContent = 'requested — waiting for font to become usable';
+      page.classList.remove('loaded');
+
+      if (document.fonts && document.fonts.load) {
+        document.fonts.load('88px "' + fontName + '"').then(() => {
+          const ms = Math.round(performance.now() - t0);
+          status.textContent = ms + ' ms (document.fonts.load)';
+          page.classList.add('loaded');
+          
+          // Add resource timing info
+          setTimeout(() => {
+            const fonts = performance.getEntriesByType('resource').filter(r => 
+              /fonts\.gstatic\.com|fonts\.googleapis\.com/.test(r.name) || r.initiatorType === 'font'
+            );
+            if (fonts.length) {
+              const parts = fonts.map(r => {
+                const start = Math.round(r.startTime);
+                const dur = Math.round(r.duration);
+                const size = (typeof r.transferSize === 'number') ? r.transferSize : 'n/a';
+                return `${r.name.split('/').slice(-1)[0]} — start ${start}ms dur ${dur}ms size ${size}`;
+              });
+              status.textContent += ' — ' + parts.join(' | ');
+            }
+          }, 250);
+        }).catch(err => {
+          status.textContent = 'error: ' + (err && err.message || err);
+        });
+      } else {
+        status.textContent = 'Font Loading API not available in this Safari version';
+      }
+    }
+
+    function generateGoogleFontUrl(fontFamily) {
+      // Generate a Google Fonts URL with common weights
+      const encodedFamily = encodeURIComponent(fontFamily);
+      if (fontFamily.includes('Mono') || fontFamily === 'Inconsolata') {
+        return `https://fonts.googleapis.com/css2?family=${encodedFamily}:wght@400;700&display=swap`;
+      } else {
+        return `https://fonts.googleapis.com/css2?family=${encodedFamily}:ital,wght@0,300;0,400;0,700;1,400&display=swap`;
+      }
+    }
+
+    function updateFont(fontFamily) {
+      // Remove existing font link
+      if (currentFontLink) {
+        currentFontLink.remove();
+      }
+
+      // Create new font link
+      const link = document.createElement('link');
+      link.href = generateGoogleFontUrl(fontFamily);
+      link.rel = 'stylesheet';
+      link.id = 'dynamicFontLink';
+      document.head.appendChild(link);
+      
+      currentFontLink = link;
+      currentFontName = fontFamily;
+
+      // Update sample text font
+      sample.style.fontFamily = `"${fontFamily}", system-ui, -apple-system, Segoe UI, Arial`;
+      
+      // Update UI
+      currentFontNameEl.textContent = fontFamily;
+      currentFontUrlEl.textContent = link.href;
+      
+      // Update active state
+      document.querySelectorAll('.font-item').forEach(item => {
+        item.classList.remove('active');
+      });
+      const activeItem = document.querySelector(`[data-font="${fontFamily}"]`);
+      if (activeItem) {
+        activeItem.classList.add('active');
+      }
+
+      // Test the font
+      testFont(fontFamily);
+    }
+
+    function renderFontList(fonts) {
+      fontList.innerHTML = '';
+      
+      fonts.forEach(font => {
+        const li = document.createElement('li');
+        li.className = 'font-item';
+        li.dataset.font = font.family;
+        
+        if (font.family === currentFontName) {
+          li.classList.add('active');
+        }
+        
+        li.innerHTML = `
+          <div class="font-name">${font.family}</div>
+          <div class="font-preview" style="font-family: '${font.family}', system-ui;">The quick brown fox</div>
+          <div class="font-category">${font.category}</div>
+        `;
+        
+        li.addEventListener('click', () => {
+          updateFont(font.family);
+        });
+        
+        fontList.appendChild(li);
+      });
+    }
+
+    function filterFonts(searchTerm) {
+      if (!searchTerm.trim()) {
+        filteredFonts = [...popularFonts];
+      } else {
+        filteredFonts = popularFonts.filter(font => 
+          font.family.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          font.category.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+      }
+      renderFontList(filteredFonts);
+    }
+
+    // Initialize
+    function init() {
+      popularFonts = [...popularGoogleFonts];
+      filteredFonts = [...popularFonts];
+      
+      // Set up initial font link
+      currentFontLink = document.getElementById('gf') || document.querySelector('link[href*="fonts.googleapis.com"]');
+      
+      // Render font list
+      loading.style.display = 'none';
+      fontList.style.display = 'block';
+      renderFontList(filteredFonts);
+      
+      // Set up search
+      searchBox.addEventListener('input', (e) => {
+        filterFonts(e.target.value);
+      });
+      
+      // Test initial font
+      testFont(currentFontName);
+    }
+
+    // Start when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+
+    // Convenience: paste this into Safari Console (replace font name) to get a console-only quick test:
+    // const t0 = performance.now(); document.fonts.load('16px "Your Font Name"').then(()=>console.log('font loaded in',Math.round(performance.now()-t0),'ms'));
+  </script>
+</body>
+</html>
