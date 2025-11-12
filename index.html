@@ -24,20 +24,38 @@
     <title>Pawluk Web Solutions</title>
     <link rel="stylesheet" href="../styles.css">
     <style>
+
+        main {
+                margin:0;
+                padding: 40px;
+                background-image: url(https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDZ2YTAzOGp0dzhnYmtpMmt5eThrMHM4ZmZ6ZzN1MWV6aThtZTl2diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YkXNjAkG7CfEVx3gcy/giphy.gif);
+                background-repeat: no-repeat;
+                background-size: cover;
+                box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+                border-radius: 12px;
+                height: 600px;
+            }
+
+
         body {
             margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            /* min-height: 300px; */
             background-color: #23282A;
             color: #FFFFFF;
             font-family: Arial, sans-serif;
             font-size: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             overflow: hidden;
         }
 
-        .welcome-message {
+        .welcome-message {top:0px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            text-align: center;
             animation: fadeInOut 5s infinite;
         }
 
@@ -57,13 +75,15 @@
     <div class="welcome-message">Welcome to Pawluk Web Solutions</div>
 
     <!--Add in the image of the world that I have in my images folder-->
-    <img src="/images/world-trans-big.png" alt="Beautiful Landscape 2" style="width:500px;height:auto;">
-       
-    <section>
-      <p> We use creativity and innovation to bring the world to your fingertips.</p>
-    </section>
+    
+    <main>
+        
+            <p> We use creativity and innovation to bring the world to your fingertips.</p>
+        
 
-    <button onclick="openForm()">Open Contact Form</button>
+    </main>
+        <button onclick="openForm()">Open Contact Form</button>
+
 
     <script>
         function openForm() {
