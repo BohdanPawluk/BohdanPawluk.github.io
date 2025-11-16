@@ -30,12 +30,55 @@
         text-align: center;
         background-color: #664545;
       }
+
+
+
+        /* if the screen or browser window is less than 393px change the background color */
+        @media screen and (max-width: 390px) {
+            main {
+                background-color: #f0f0f0;
+                background-image: none;
+                padding-bottom: 60%;
+            }
+
+            img { display:none
+             
+            }
+            /* hide the 2nd and 3rd columns of the table, cause we are rendering on mobile */
+            td:nth-child(2), th:nth-child(2),
+            td:nth-child(3), th:nth-child(3) {
+            display: none;
+            }
+
+
+
+
+        }
+
+        @media screen and (min-width:900px) {
+            main {
+                background-color: #f0f0f0;
+                background-image: none;
+                padding-bottom: 60%;
+            }
+        
+        img {
+                width:10%;
+                height:auto;
+            }
+        
+        }
+
+
+
+
+
     </style>
 </head>
 <body>
     
 <!--- image of Bohdan Pawluk-->
-   <img alignment="left" src="/images/bohdanPicture-touchUp.jpg" alt="Photo of Bohdan Pawluk" style="width:200px;height:auto;">
+   <img alignment="left" src="/images/bohdanPicture-touchUp.jpg" alt="Photo of Bohdan Pawluk">
     
 
         <!-- <article>. 
