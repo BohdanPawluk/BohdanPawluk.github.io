@@ -3,74 +3,136 @@
 
   <head>
     <title>Contact Form</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+      form {
+        background: #23282A;
+        color: #fff;
+        padding: 2rem;
+        border-radius: 8px;
+        max-width: 600px;
+        margin: 2rem auto;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      }
+      fieldset {
+        border: 1px solid #444;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 6px;
+      }
+      legend {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #FFD700;
+      }
+      label {
+        display: block;
+        margin-top: 1rem;
+        margin-bottom: 0.3rem;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+      }
+      input[type="submit"] {
+        background: #FFD700;
+        color: #23282A;
+        border: none;
+        padding: 0.7rem 2rem;
+        border-radius: 4px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        margin-top: 1rem;
+      }
+      input[type="submit"]:hover {
+        background: #FFC300;
+      }
+      .checkbox-group, .radio-group {
+        margin-bottom: 1rem;
+      }
+    </style>
   </head>
 
   <body>
     <h1>Contact Form</h1>
     <!-- Form to collect user information and send it via email -->
-    <form name="eForm" method="post" action="mailto:Bohdan.Pawluk@icloud.com" enctype="text/plain" onsubmit="closeFormPage(event)">
+    <form name="eForm" method="post" action="send-email.php" onsubmit="closeFormPage(event)">
       <!-- Contact input fields -->
-      Name:
-       <br>
-       <input type="text" name="firstName" placeholder="Enter your first name" size="30">
-       <input type="text" name="lastName" placeholder="Enter your last name" size="30">
-       <input type="text" name="companyName" placeholder="Enter your company name" size="30">
-       <input type="email" name="email" placeholder="Enter your email" size="30">
-       <input type="tel" name="phone" placeholder="Enter your phone number" size="30">
-       <br>
-       
-       <br>
-       <!-- Dropdown menu for favorite car -->
-       Business Life Cycle Stage:
-       <select name="businessStage">
-         <option value="startup">Startup</option>
-         <option value="growth">Growth</option>
-         <option value="established">Established</option>   
-       </select>
-       <br>
-       <br>
-       <!-- Comments text area -->
-       Comments:
-       <br>
-       <textarea name="comments" rows="10" cols="50"></textarea>
-       <br>
-       <br>
-       <!-- Checkbox group for website services -->
-       Service Required:
-       <br>
-       <input type="radio" name="website" value="new" checked> I need a new website
-       <input type="radio" name="website" value="update"> I need a website update
-       <br>
-       <br>
-       <!-- Radio button group for additional services -->
-       Additional Services:
-       <br>
-       <input type="checkbox" name="additionalServices" value="seo"> SEO Optimization
-       <input type="checkbox" name="additionalServices" value="content"> Content Creation
-       <input type="checkbox" name="additionalServices" value="ads"> Online Advertising
-       <input type="checkbox" name="additionalServices" value="consulting"> Consulting
-       <input type="checkbox" name="additionalServices" value="maintenance"> Website Maintenance
-       <input type="checkbox" name="additionalServices" value="ai"> Ai (Artificial Intelligence) Integration
-       <br>
-       <br>
-       <!-- Submit button -->
-       Finnish and Submit the Form:
-       <br>
-       <input type="submit" value="SUBMIT">
-       <!-- close the form page -->
-     </form>   
+      <fieldset>
+        <legend>Your Details</legend>
+        <label for="firstName">First Name:</label>
+        <input type="text" name="firstName" id="firstName" placeholder="Enter your first name" required>
+        <label for="lastName">Last Name:</label>
+        <input type="text" name="lastName" id="lastName" placeholder="Enter your last name" required>
+        <label for="companyName">Company Name:</label>
+        <input type="text" name="companyName" id="companyName" placeholder="Enter your company name">
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" placeholder="Enter your email" required>
+        <label for="phone">Phone:</label>
+        <input type="tel" name="phone" id="phone" placeholder="Enter your phone number">
+      </fieldset>
+      <fieldset>
+        <legend>Business Info</legend>
+        <label for="businessStage">Business Life Cycle Stage:</label>
+        <select name="businessStage" id="businessStage">
+          <option value="startup">Startup</option>
+          <option value="growth">Growth</option>
+          <option value="established">Established</option>   
+        </select>
+        <label for="comments">Comments:</label>
+        <textarea name="comments" id="comments" rows="5" placeholder="Your comments..."></textarea>
+      </fieldset>
+      <fieldset>
+        <legend>Services</legend>
+        <!-- Radio button group for website services -->
+        <div class="radio-group">
+          <label>Service Required:</label>
+          <input type="radio" name="website" value="new" id="website-new" checked>
+          <label for="website-new" style="display:inline;">I need a new website</label>
+          <input type="radio" name="website" value="update" id="website-update">
+          <label for="website-update" style="display:inline;">I need a website update</label>
+        </div>
+        <!-- Checkbox group for additional services -->
+        <div class="checkbox-group">
+          <label>Additional Services:</label>
+          <input type="checkbox" name="additionalServices" value="seo" id="service-seo">
+          <label for="service-seo" style="display:inline;">SEO Optimization</label>
+          <input type="checkbox" name="additionalServices" value="content" id="service-content">
+          <label for="service-content" style="display:inline;">Content Creation</label>
+          <input type="checkbox" name="additionalServices" value="ads" id="service-ads">
+          <label for="service-ads" style="display:inline;">Online Advertising</label>
+          <input type="checkbox" name="additionalServices" value="consulting" id="service-consulting">
+          <label for="service-consulting" style="display:inline;">Consulting</label>
+          <input type="checkbox" name="additionalServices" value="maintenance" id="service-maintenance">
+          <label for="service-maintenance" style="display:inline;">Website Maintenance</label>
+          <input type="checkbox" name="additionalServices" value="ai" id="service-ai">
+          <label for="service-ai" style="display:inline;">AI Integration</label>
+        </div>
+      </fieldset>
+      <!-- Submit button -->
+      Finnish and Submit the Form:
+      <br>
+      <input type="submit" value="SUBMIT">
+    </form>   
 
-      <script>
-        function closeFormPage(event) {
-          event.preventDefault(); // Prevent the default form submission
-          alert("Form submitted! The page will now close.");
-          window.close(); // Attempt to close the window
-        }
-      </script>
+    <script>
+      function closeFormPage(event) {
+        //event.preventDefault(); // Prevent the default form submission// the was not submitted
+        alert("Form submitted! The page will now close.");
+        window.close(); // Attempt to close the window
+      }
+    </script>
+  </body>
 
-   </body>
-
-<footer>
+  <footer>
     <p>Checkout my <a href="../index.html">Home Page</a></p>
     <p>&copy; 2025 My Website</p>
   </footer>
