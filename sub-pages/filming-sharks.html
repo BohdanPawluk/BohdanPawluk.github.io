@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta Keywords="Shark Filming, Underwater Filming, Marine Life, Sharks, Filmmaking">
+    <meta Description="Explore the thrilling world of filming sharks">
+    <meta Author="Bohdan Pawluk">
+    <title>Filming Sharks - Pawluk Web Solutions</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        * { margin: 0; padding: 0; }
+        /* This is the navigation bar style setup */
+            nav {
+                width: 100%;
+                margin: 0px; 
+                color: white;
+                padding: 1em;
+                position: fixed;
+                top: 0px;
+                background: #23282A; /* Add this line */
+                z-index: 1000;       /* Add this line */
+            }
+
+            /* the navigation list needs to be centered horizontally to sit at the top
+            line of the nav bar
+            This is the unordered list within the nav element */
+            nav ul {
+                list-style-type: none;
+                padding: 0;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            nav ul li {
+                /* display: block; */
+                 float: left;
+                margin-right: 1em;
+            }
+
+            nav ul li a {
+                color: white;
+                text-decoration: none;
+            }
+
+            nav ul li a:hover {
+                text-decoration: none;
+                color: #FFD700;
+            }
+
+
+            #shark-container {
+                display: flex;
+                flex-direction: column; 
+                align-items: center;
+                margin-top: 120px; /* To avoid overlap with fixed nav */
+                padding: 20px;
+            }
+
+            @media screen and (max-width: 600px) {
+                #shark-container {
+                    padding: 10px;
+                    margin-top: 20px;
+                }
+
+                
+                h1 {
+                    font-size: 1.0em;
+                }
+                
+                p {
+                    font-size: 1em;
+                    /* display:none; */
+                }
+
+                video {
+                    width: 100vw !important;
+                    height: 56vw !important; /* 16:9 aspect ratio */
+                    max-width: 100vw !important;
+                    max-height: 56vw !important;
+                    margin-left: -10vw; /* Center if parent has padding */
+                    margin-right: 0;
+                    margin-top: 20px;
+                    display: block;
+                }
+
+            }
+
+    
+            main {
+                max-width: 90%;
+                margin: 0 auto;
+                padding: 20px;
+            }
+
+    </style>
+</head>
+
+<body> 
+    <nav>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="my-work.html">My Work</a></li>           
+            <li><a href="contact-form.html">Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div id="shark-container">
+            <h1>Filming Sharks</h1>
+            <p>Explore the thrilling world of filming sharks with our expert tips and techniques. Learn how to capture stunning underwater footage while ensuring safety and respect for these magnificent creatures.</p>
+            <video src="/images/shark-attacks.mp4" title="Shark Filming" style="max-width:100%; height:auto; margin-top:20px;" controls></video>
+            
+        </div>
+    </main>
+</body>
