@@ -31,18 +31,20 @@
                 padding: 0;
                 display:flex;
                 justify-content: center;
-                align-items: center;
+                /* align-items: center; */
             }
 
             nav ul li {
                 /* display: block; */
-                 float: left;
-                margin-right: 1em;
+                 /* float: left; */
+                margin-right: 3em;
+                
             }
 
             nav ul li a {
                 color: white;
                 text-decoration: none;
+                text-align:center;
             }
 
             nav ul li a:hover {
@@ -53,6 +55,10 @@
             #shark-content {
                 width:90%;
                 margin-top:70px;
+                margin-left:auto;
+                margin-right:auto;
+                margin-bottom:30px;
+                
                 /* margin-top: 80px;  To avoid overlap with fixed nav */
                 /*padding: 20px; */
                 
@@ -92,9 +98,9 @@
 
             #shark-table { 
                 display:table;
+                margin-top:150px;
                 margin:auto;
                 width: 100%;
-                
                 background-color:#bfebf8;
             }
 
@@ -129,6 +135,7 @@
              #shark-video  {
                 width:100%;
                 margin-left: auto;
+                margin-right:auto;
                 margin-right: auto;
                 margin-top:30px;
                 clear:both;
@@ -149,7 +156,14 @@
                     list-style: none;
                 }
         /* this is my code for the #shark-video, the video had to be covered to a smaller size. I used ffmpeg to create a smaller version */
-        video { width:90%; }
+        video { width:90%; 
+                height:auto;
+                display:block;
+                margin-left:auto;
+                margin-right:auto;
+                border-radius:12px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
 
 
 
