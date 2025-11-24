@@ -19,7 +19,7 @@
                 padding: 1em;
                 position: fixed;
                 top: 0px;
-                background: #23282A; /* Add this line */
+                background:color(srgb 0.3436 0.7482 0.8867);
                 z-index: 1000;       /* Add this line */
             }
 
@@ -52,7 +52,7 @@
 
             #shark-content {
                 width:90%;
-                margin-top:50px;
+                margin-top:70px;
                 /* margin-top: 80px;  To avoid overlap with fixed nav */
                 /*padding: 20px; */
                 
@@ -94,8 +94,10 @@
                 display:table;
                 margin:auto;
                 width: 100%;
-                background-color: #a8d4e6;
+                
+                background-color:#bfebf8;
             }
+
 
 
             .shark-row {
@@ -133,8 +135,22 @@
                 
                 }
         
-        /* this is my code for the #shark-video */
+
+
+
+                ul {
+                    margin-top: 10px;
+                    margin-left: 20px;
+                    margin-bottom: 10px;
+                }
+
+                li {
+                    margin-bottom: 5px;
+                    list-style: none;
+                }
+        /* this is my code for the #shark-video, the video had to be covered to a smaller size. I used ffmpeg to create a smaller version */
         video { width:90%; }
+
 
 
 
@@ -156,8 +172,11 @@
                     clear: both;
                 }
                 
-                h1 {
-                    font-size: 1.0em;
+                h1,h2 {
+                    font-size: 1.5em;
+                    text-align:center;
+                    
+                    color:color(srgb 0.3436 0.7482 0.8867)
                 }
                 
                 p {
@@ -177,16 +196,27 @@
             }
 
     
+
+
+           
+
      main {
             max-width: 90%;
              margin: 0 auto;
             padding: 20px;
+            font-size:1em;
             }
+    
+     h1,h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color:color(srgb 0.3436 0.7482 0.8867)
+        }
 
         footer {
             text-align: center;
             padding: 10px;
-            background-color: #23282A;
+            background:color(srgb 0.3436 0.7482 0.8867);
             color: white;
             
             bottom: 0;
@@ -215,7 +245,7 @@
 
 
                 <div id="shark-semester">
-                    <p> Predators of the Deep</p>
+                   
 
                 </div>
 
@@ -256,7 +286,7 @@
                 <div id="shark-table">
                     
                             <div class="shark-cell">
-                                <h2>Cell 1 -Equipment</h2>
+                                <h3>Equipment</h3>
                                 <p>Use high-quality underwater cameras and housings to withstand the pressure and conditions of the ocean. 
                                 Consider using wide-angle lenses to capture the full scope of shark movements. Lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum 
@@ -265,19 +295,19 @@
                                 illianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
                                 </p>
 
-                                <ol> 
+                                <ul> 
                                     <li>Underwater Camera</li>
                                     <li>Wide-Angle Lens</li>
                                     <li>Protective Housing</li>
                                     <li>Diving Gear</li>
                                     <li>Lighting Equipment</li>
-                                </ol>
+                                </ul>
 
 
                             </div>
 
                             <div class="shark-cell">
-                                <h2>Cell 2 -Safety</h2>
+                                <h3>Safety</h3>
                                 <p>Always prioritize safety when filming sharks. Work with experienced divers and shark experts, maintain a safe distance, and avoid sudden movements that may provoke the animals.
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum 
                                 jillianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
