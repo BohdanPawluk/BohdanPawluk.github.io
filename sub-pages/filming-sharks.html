@@ -8,7 +8,7 @@
     <meta Description="Explore the thrilling world of filming sharks">
     <meta Author="Bohdan Pawluk">
     <title>Filming Sharks - Pawluk Web Solutions</title>
-    <!-- <link rel="stylesheet" href="../styles.css"> (remove the style sheet)-->
+
     <style>
         * { margin: 0; padding: 0; }
         /* This is the navigation bar style setup */
@@ -20,23 +20,19 @@
                 position: fixed;
                 top: 0px;
                 background:color(srgb 0.3436 0.7482 0.8867);
-                z-index: 1000;       /* Add this line */
+                z-index: 1000;      
             }
 
-            /* the navigation list needs to be centered horizontally to sit at the top
-            line of the nav bar
-            This is the unordered list within the nav element */
+            
             nav ul {
                 list-style-type: none;
                 padding: 0;
                 display:flex;
-                justify-content: center;
-                /* align-items: center; */
+                justify-content: center; 
             }
 
             nav ul li {
-                /* display: block; */
-                 /* float: left; */
+                float: left; 
                 margin-right: 3em;
                 
             }
@@ -58,19 +54,15 @@
                 margin-left:auto;
                 margin-right:auto;
                 margin-bottom:30px;
-                
-                /* margin-top: 80px;  To avoid overlap with fixed nav */
-                /*padding: 20px; */
-                
             }
 
             #shark-semester {
                 width: 100%;
-                margin-top: 100px;
+                margin-top: 50px;
                 background: url(/images/shark-attacks.jpg) no-repeat left center;
                 background-size: cover;
                 height: 40vh; /* Responsive height for large screens */
-                min-height: 320px; /* Ensures it's not too small on short screens */
+                min-height: 350px; /* Ensures it's not too small on short screens */
                 max-height: 800px; /* Prevents it from being too tall on very large screens */
                 display: flex;
                 align-items: center;
@@ -85,20 +77,21 @@
             #ls-content {
                 width:45%;
                 margin-top:50px;
-                float:left
+                float:left;
+                margin-bottom:30px;
             }
 
             #rs-content {
                 width:45%;
                 margin-top:50px;
                 float:right;
+                margin-bottom:30px;
             }
 
 
 
             #shark-table { 
                 display:table;
-                margin-top:150px;
                 margin:auto;
                 width: 100%;
                 background-color:#bfebf8;
@@ -106,15 +99,10 @@
 
 
 
-            .shark-row {
-                display: table-row;
-                border: 5px solid #981d1d;
-            }
 
             .shark-cell {
                 display: table-cell;
                 padding: 16px;
-               
                 vertical-align: top;
                 width:auto;
             }
@@ -127,8 +115,6 @@
                 position: relative;
                 left: 50%;
                 right: 50%;
-                transform: translateX(-50%);
-                box-sizing: border-box;
             }
 
 
@@ -136,7 +122,6 @@
                 width:100%;
                 margin-left: auto;
                 margin-right:auto;
-                margin-right: auto;
                 margin-top:30px;
                 clear:both;
                 
@@ -156,13 +141,13 @@
                     list-style: none;
                 }
         /* this is my code for the #shark-video, the video had to be covered to a smaller size. I used ffmpeg to create a smaller version */
-        video { width:90%; 
+             video { width:90%; 
                 height:auto;
                 display:block;
                 margin-left:auto;
                 margin-right:auto;
                 border-radius:12px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                
             }
 
 
@@ -174,12 +159,11 @@
                     margin-top: 20px;
                 }
                 /* Adjust left and right side content for smaller screens */
-                #ls-content,
-                #rs-content {
+                #ls-content, #rs-content {
                     width: 95%;
                     float: left;
                     margin-left: 2.5%; /* Ensures both start at the same left position */
-                    box-sizing: border-box;
+                    margin-bottom:30px;
                 }
 
                 #rs-content {
@@ -203,7 +187,7 @@
                 #shark-semester {
                     height: 180px;
                     font-size: 0.95em;
-                    margin-top: 60px;
+                    margin-top: 30px;
                     background-position: left center;
                 }
 
