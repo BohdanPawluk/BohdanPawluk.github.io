@@ -8,8 +8,13 @@
     <meta Description="Explore the thrilling world of filming sharks">
     <meta Author="Bohdan Pawluk">
     <title>Filming Sharks - Pawluk Web Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
 
-    <style>
+</head>
+
+<style>
         * { margin: 0; padding: 0; }
         /* This is the navigation bar style setup */
             nav {
@@ -48,6 +53,17 @@
                 color: #FFD700;
             }
 
+
+
+            .creepster-font {
+            font-family: "Creepster", system-ui;
+            font-weight: 400;
+            font-style: normal;
+            }
+
+
+
+
             #shark-content {
                 width:90%;
                 margin-top:70px;
@@ -70,8 +86,20 @@
                 color: white;
                 text-shadow: 1px 1px 4px #000;
                 border-radius: 12px;
-                overflow: hidden;
+                 overflow: hidden; 
+                 position:relative;
             }
+
+        #shark-semester p {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            margin: 0;
+            left: 0;
+            font-size: 1.5em;            
+        }
+
 
 
             #ls-content {
@@ -139,8 +167,9 @@
                 li {
                     margin-bottom: 5px;
                     list-style: none;
+                    font-size:0.75em;
                 }
-        /* this is my code for the #shark-video, the video had to be covered to a smaller size. I used ffmpeg to create a smaller version */
+            /* this is my code for the #shark-video, the video had to be coverted to a smaller size. I used ffmpeg to create a smaller version */
              video { width:90%; 
                 height:auto;
                 display:block;
@@ -152,37 +181,38 @@
 
 
 
-
+            /* Adjust left and right side content for smaller screens, like mobile devices */
             @media screen and (max-width: 712px) {
                 #shark-container {
                     padding: 50px;
                     margin-top: 20px;
                 }
-                /* Adjust left and right side content for smaller screens */
+                
                 #ls-content, #rs-content {
                     width: 95%;
                     float: left;
                     margin-left: 2.5%; /* Ensures both start at the same left position */
-                    margin-bottom:30px;
+                    margin-bottom:10px;
                 }
+            
 
                 #rs-content {
                     clear: both;
+                    margin-bottom:30px;
                 }
                 
+
                 h1,h2 {
                     font-size: 1.5em;
                     text-align:center;
-                    
                     color:color(srgb 0.3436 0.7482 0.8867)
                 }
                 
                 p {
                     font-size: 1em;
-                    /* display:none; */
                 }
 
-                
+       
 
                 #shark-semester {
                     height: 180px;
@@ -193,10 +223,6 @@
 
             }
 
-    
-
-
-           
 
      main {
             max-width: 90%;
@@ -221,8 +247,8 @@
             width: 100%;
         }
 
-    </style>
-</head>
+</style>
+
 
 <body> 
     <nav>
@@ -243,7 +269,9 @@
 
 
                 <div id="shark-semester">
-                   
+                <!-- this div is blank for now-->   
+
+                    <p class="creepster-font">Predators of the Deep</p>
 
                 </div>
 
@@ -261,7 +289,7 @@
 
                 </div>
 
-           
+     
                                 
                 <div  id="rs-content">
 
@@ -274,8 +302,6 @@
                      Quae, esse beatae reiciendis ea repudiandae dolores commodi ut, voluptas eos suscipit laudantium tenetur omnis! 
                      Aliquid?
                     </p>
-
-
                 </div>
 
 
@@ -283,7 +309,7 @@
                 <!-- this is the table containing the cell colums that are holding the content in a table format-->
                 <div id="shark-table">
                     
-                            <div class="shark-cell">
+                     <div class="shark-cell">
                                 <h3>Equipment</h3>
                                 <p>Use high-quality underwater cameras and housings to withstand the pressure and conditions of the ocean. 
                                 Consider using wide-angle lenses to capture the full scope of shark movements. Lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
@@ -300,11 +326,9 @@
                                     <li>Diving Gear</li>
                                     <li>Lighting Equipment</li>
                                 </ul>
+                      </div>
 
-
-                            </div>
-
-                            <div class="shark-cell">
+                     <div class="shark-cell">
                                 <h3>Safety</h3>
                                 <p>Always prioritize safety when filming sharks. Work with experienced divers and shark experts, maintain a safe distance, and avoid sudden movements that may provoke the animals.
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum 
@@ -312,27 +336,24 @@
                                 lijllianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
                                 illianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum 
                                 </p>
-                            </div>
-
-
+                     </div>
                                          
                 </div>
 
             </div>   
        
 
-                    <div id="shark-video">
+         <div id="shark-video">
 
-                        <video src="/images/shark-attacks-small.mp4"  controls></video>
-                    </div>
+           <video src="/images/shark-attacks-small.mp4"   controls></video>
+         </div>
             
-          
-  
     </main>
+
 </body>
 
-    <footer>
-        <p>&copy; 2024 Pawluk Web Solutions</p>
-    </footer>   
+<footer>
+  <p>&copy; 2024 Pawluk Web Solutions</p>
+</footer>   
 
 </html>
