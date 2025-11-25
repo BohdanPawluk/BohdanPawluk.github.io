@@ -8,16 +8,27 @@
     <meta Description="Explore the thrilling world of filming sharks">
     <meta Author="Bohdan Pawluk">
     <title>Filming Sharks - Pawluk Web Solutions</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> <!-- Import Google Fonts Preconnect  -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet"> <!-- Use Google Fonts -->
 
 </head>
 
 <style>
-        * { margin: 0; padding: 0; }
-        /* This is the navigation bar style setup */
-            nav {
+       
+        * { margin: 0; padding: 0; }  /* Reset some default styles for boilerplate code */
+        
+            .colorful-text {  /* This is a reusable class for colorful backgrounds on fonts */
+                color: color(srgb 0.3436 0.7482 0.8867);
+
+            }
+
+            .colorful-background {  /* This is a reusable class for colorful backgrounds */
+                background: color(srgb 0.3436 0.7482 0.8867);
+             
+            }
+
+            nav {   /* This is the navigation bar style setup */
                 width: 100%;
                 margin: 0px; 
                 color: white;
@@ -29,29 +40,30 @@
             }
 
             
-            nav ul {
+             nav ul {
                 list-style-type: none;
                 padding: 0;
-                display:flex;
+                 display:flex; 
                 justify-content: center; 
-            }
+            } 
 
             nav ul li {
                 float: left; 
-                margin-right: 3em;
-                
+                margin-right: 17em;
+                margin-left: 17em;
             }
 
             nav ul li a {
                 color: white;
                 text-decoration: none;
-                text-align:center;
+                text-align:center; 
             }
 
-            nav ul li a:hover {
+              nav ul li a:hover {
                 text-decoration: none;
-                color: #FFD700;
-            }
+                color: #ff00f2;
+            } 
+
 
 
 
@@ -79,35 +91,33 @@
                 background-size: cover;
                 height: 90vh; /* Responsive height for large screens */
                 min-height: 350px; /* Ensures it's not too small on short screens */
-                max-height: 1000px; /* Prevents it from being too tall on very large screens */
+                max-height: 1200px; /* Prevents it from being too tall on very large screens, this is set for Most common for 27-inch monitors: 2560 × 1440 pixels */
                 display: flex;
-                color: white;
+                color: white;  /* Text color for overlay text */
                 border-radius: 12px;
-                 overflow: hidden; 
-                  position:relative; 
+                overflow: hidden; 
+                position:relative; 
                  
             }
 
-        #shark-image p {
+        #shark-image p { /* Overlay text style at the bottom of the image */
             position: absolute;
             bottom: 20px;
             width: 100%;
             text-align: center;
-            margin: 0;
-            left: 0;
             font-size: 3.5em;            
         }
 
 
 
-            #ls-content {
+            #ls-content { /* Left side content container */
                 width:45%;
                 margin-top:50px;
                 float:left;
                 margin-bottom:30px;
             }
 
-            #rs-content {
+            #rs-content { /* Right side content container */
                 width:45%;
                 margin-top:50px;
                 float:right;
@@ -134,17 +144,8 @@
             }
 
 
-            #shark-container {
-                padding: 0;
-                margin: 0;
-                width: 100vw;
-                position: relative;
-                left: 50%;
-                right: 50%;
-            }
 
-
-             #shark-video  {
+             #shark-video  { /* Shark video container, that holds the video element */
                 width:100%;
                 margin-left: auto;
                 margin-right:auto;
@@ -153,7 +154,16 @@
                 
                 }
         
-
+            
+             video { /* this is my code for the #shark-video, the video had to be coverted to a smaller size. I used ffmpeg to create a smaller version */
+                width:90%; 
+                height:auto;
+                display:block;
+                margin-left:auto;
+                margin-right:auto;
+                border-radius:12px;
+                
+            }
 
 
                 ul {
@@ -167,32 +177,25 @@
                     list-style: none;
                     font-size:0.75em;
                 }
-            /* this is my code for the #shark-video, the video had to be coverted to a smaller size. I used ffmpeg to create a smaller version */
-             video { width:90%; 
-                height:auto;
-                display:block;
-                margin-left:auto;
-                margin-right:auto;
-                border-radius:12px;
-                
-            }
+            
 
 
 
-            /* Adjust left and right side content for smaller screens, like mobile devices */
+            /* Adjust left and right side content for smaller screens, like mobile devices, rs-content container will
+            be pushed below ls-content */
             @media screen and (max-width: 712px) {
-                #shark-container {
-                    padding: 50px;
-                    margin-top: 20px;
-                }
-                
-                #ls-content, #rs-content {
+                #ls-content, #rs-content { /* Both containers take full width on small screens, the sit in  shark-content*/
                     width: 95%;
                     float: left;
                     margin-left: 2.5%; /* Ensures both start at the same left position */
                     margin-bottom:10px;
                 }
             
+                nav ul li {
+                   float: left; 
+                    margin-right: 4em;
+                    margin-left: 4em;
+             }
 
                 #rs-content {
                     clear: both;
@@ -203,7 +206,7 @@
                 h1,h2 {
                     font-size: 1.5em;
                     text-align:center;
-                    color:color(srgb 0.3436 0.7482 0.8867)
+                   
                 }
                 
                 p {
@@ -216,11 +219,11 @@
                     height: 180px;
                     font-size: 0.95em;
                     margin-top: 30px;
-                    background-position: left center;
+                    
                 }
 
 
-                #shark-image p {
+                #shark-image p { /* Overlay text style at the bottom of the image for p tag */
                     position: absolute;
                     bottom: 20px;
                     width: 100%;
@@ -233,7 +236,7 @@
 
 
 
-     main {
+     main { /* Main content container styling this holds the main content, including all text and media */
             max-width: 90%;
              margin: 0 auto;
             padding: 20px;
@@ -243,15 +246,13 @@
      h1,h2 {
             text-align: center;
             margin-bottom: 20px;
-            color:color(srgb 0.3436 0.7482 0.8867)
+            
         }
 
         footer {
             text-align: center;
             padding: 10px;
-            background:color(srgb 0.3436 0.7482 0.8867);
             color: white;
-            
             bottom: 0;
             width: 100%;
         }
@@ -260,7 +261,7 @@
 
 
 <body> 
-    <nav>
+    <nav class="colorful-text" class="colorful-background">
         <ul>
             <li><a href="../index.html">Home</a></li>
             <li><a href="my-work.html">My Work</a></li>           
@@ -270,9 +271,9 @@
 
 
 
-    <main>
+        <main>
             <div id="shark-content">
-                <h1>Filming Sharks</h1>
+                <h1 class="colorful-text">Filming Sharks</h1>
                 <p>Explore the thrilling world of filming sharks with our expert tips and techniques. Learn how to capture stunning underwater footage while ensuring safety and respect for these magnificent creatures.</p>
 
 
@@ -286,7 +287,7 @@
 
 
                 <div  id="ls-content">
-                    <h2>Left Side Content</h2>
+                    <h2 class="colorful-text">Left Side Content</h2>
                     <p>This is some content on the left side. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                     jillianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
                     lijllianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
@@ -301,8 +302,7 @@
      
                                 
                 <div  id="rs-content">
-
-                    <h2>Right Side Content</h2>
+                    <h2 class="colorful-text">Right Side Content</h2>
                     <p>This is some content on the right side. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                     jillianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
                     lijllianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
@@ -357,12 +357,12 @@
            <video src="/images/shark-attacks-small.mp4"   controls></video>
          </div>
             
-    </main>
+        </main>
 
-</body>
+    </body>
 
-<footer>
-  <p>&copy; 2024 Pawluk Web Solutions</p>
-</footer>   
+    <footer class="colorful-background">
+        <p>&copy; 2024 Pawluk Web Solutions</p>
+    </footer>   
 
 </html>
