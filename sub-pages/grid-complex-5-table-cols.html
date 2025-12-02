@@ -1,0 +1,340 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Grid Complex 5 Table cols</title>
+            <!-- Google Fonts: Creepster -->
+            <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<style>
+
+            .magazine { /* define grid container with the grid-template-areas property */
+                    display: grid;
+                    grid-template-areas:
+                        "nav nav"
+                        "image image"
+                        "article1 article2 "
+                        "table table"
+                        "video video"
+                        "footer footer";
+                        grid-template-columns: 2fr 2fr;
+                        grid-template-rows: auto 1fr auto auto  auto 100px;
+                        /* gap: 5px; */
+                        /* background-color: black; remove the grid lines */ 
+                        padding: 5px;
+                    }
+
+            .magazine div { /* general style wrapper for all divs within the container adds grid lines  */
+                    background-color: white;; 
+                    padding: 0px;
+                    padding-top:10px;
+                    padding-bottom:10px;
+                     /* color: black; /* remove the grid lines */ 
+                    }
+
+            /* define individual grid area classes */
+            .nav { grid-area: nav; }
+
+            .table { grid-area: table; }
+
+            .article1 { grid-area: article1;
+                Display: block;
+                width: 100%;
+                }
+                
+            .article2 { grid-area: article2;
+                    Display: block;
+                    width: 100%;
+                    }
+
+            .image { grid-area: image;
+                    display:block;
+                    width: 100%;
+                    height: auto;
+                    overflow: hidden;
+                }
+
+            .video { grid-area: video; }
+
+            .footer { grid-area: footer; }
+
+            /* Center the title in article1 */
+            .magazine div.article1 h2 {
+                text-align: center;
+            }
+            
+            /* Center the title in article2 */
+            .magazine div.article2 h2 {
+                text-align: center;
+                }
+                
+            /* style for the video element cell within the container that allows responsive behavior */
+            .magazine div.video video { /* style for the video element cell within the container, but the video tag is used */
+                        display: block;
+                        width: 100%;
+                        height: auto;
+                }
+
+            /* style for the image element cell within the container that allows responsive behavior */
+            .magazine div.image img { /* style for the image element cell within the container, but img tag is used */
+                        width: 100%;
+                        height: auto;
+                        background-image:contain;
+                        display: block;
+                }
+
+            /* Set blue background for nav area */
+            .magazine div.nav {
+                width:100%;
+                display:block;
+                background-color: #0077be; /* ocean blue, matches .creepster-title */
+            }
+
+            /* Formating the navigation links */ 
+
+            .magazine div.nav nav {   /* This is the navigation bar style setup */
+                        
+                        width: 100%;
+                        display:block;
+                        color: white;
+                        padding: 0px;
+                        background: color #80acc6; /* ocean blue */
+
+                    }
+
+            .magazine div.nav ul {
+                display: flex;
+                justify-content: center;
+                align-items:center;
+                padding: 0;
+                margin: 0;
+                list-style: none;
+            }
+
+            .magazine div.nav ul li {
+                flex: 1 1 auto;
+                text-align: center;
+            }
+
+            .magazine div.nav ul li a {
+                /* Restore original link formatting */
+                color: white;
+                text-decoration: underline;
+                display: inline-block;
+                text-align:vertical; 
+                font-size: 2em;
+                transition: background 0.2s, color 0.2s;
+            }
+
+            .magazine div.nav ul li a:hover {
+                text-decoration: none;
+                color: #ff00f2;
+            } 
+
+            /* Creepster font for the image title */
+            .creepster-title {
+                position: absolute;
+                left: 0;
+                bottom: 20px;
+                width: 100%;
+                text-align: center;
+                font-family: 'Creepster', cursive;
+                font-size: 3em;
+                color: #80acc6; /* ocean blue */
+                text-shadow: 2px 2px 8px #000, 0 0 10px #000;
+                pointer-events: none;
+                z-index: 2;
+            }
+
+            /* Ensure .image is positioned relative for absolute child */
+            .magazine .image {
+                position: relative;
+            }
+
+            .magazine div.table table{
+                            display:table; 
+                            margin:auto;
+                            width: 100%;
+                            background-color:#aecdd6;
+                        }
+
+            .magazine .table table tr {
+                display: flex;
+            }
+
+            .magazine div.table table td { 
+                            /* display: table-cell; */
+                            flex: 1 1 auto;
+                            padding: 16px;
+                            vertical-align: top;
+                            width:auto;
+                }
+
+            /* Center the h3 titles in each table cell */
+            .magazine div.table td h3 {
+                text-align: center;
+            }
+
+            .magazine div.footer  {
+                width: 100%;
+                background-color: #0077be; /* ocean blue, or use #80acc6 for a lighter blue */
+                color: #fff;
+                text-align: center;
+                padding: 20px 0;
+                font-size: 1.2em;
+                font-family: Arial, sans-serif;
+                letter-spacing: 1px;
+                border-top: 4px solid #80acc6; /* accent line */
+            }
+
+
+
+/* Adjust left and right side content for smaller screens, like mobile devices, rs-content container will
+            be pushed below ls-content */
+            @media screen and (max-width: 600px) {
+
+                 .magazine { /* define grid container with the grid-template-areas property */
+                    display: grid;
+                    grid-template-areas:
+                        "nav"
+                        "image"
+                        "article1"
+                         "article2"
+                        "table"
+                        "video"
+                        "footer";
+                        grid-template-columns: 1fr;
+                        grid-template-rows: auto 1fr auto auto auto auto 100px;
+                        /* gap: 5px; */
+                        /* background-color: black; remove the grid lines */ 
+                        padding: 5px;
+                    }
+                .magazine .article1,
+                .magazine .article2 {
+                        font-size: 2em;
+                    }
+
+
+                .magazine .table table tr {
+                    flex-direction: column;
+                    display: flex;
+                }
+                .magazine .table table td {
+                    width: 100%;
+                    box-sizing: border-box;
+                     font-size: 2em;
+                }
+
+            .creepster-title {
+                font-size: 2em;
+                z-index: 2;
+            }
+
+
+
+
+            }
+
+
+
+
+</style>
+
+
+    <body>
+
+        <div class="magazine">
+                    <div class="nav"><ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Contact</a></li></ul>
+                    </div>
+
+                    <div class="image"><img src="/images/shark-attacks.jpg" alt="Feature Image"></img></div>
+                        <div class="image">
+                            <img src="/images/shark-attacks.jpg" alt="Feature Image">
+                            <div class="creepster-title">Predators of the Deep</div>
+                        </div>
+
+
+                    <div class="article1">
+
+                            <h2>Left Side Content</h2>
+                                <p>This is some content on the left side. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                jillianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
+                                lijllianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
+                                illianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
+                                </p>
+                     </div>
+
+
+
+                     <div class="article2">
+                            <h2>Right Side Content</h2>
+                                <p>This is some content on the right side. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                jillianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
+                                lijllianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
+                                illianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
+                                </p>
+
+
+                     </div>
+        
+                    <div class="table">
+                        <table>
+                                    <tr>
+
+                                        <td>
+                                                <h3>Equipment</h3>
+                                                <p>Use high-quality underwater cameras and housings to withstand the pressure and conditions of the ocean. 
+                                                Consider using wide-angle lenses to capture the full scope of shark movements. Lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum 
+                                                jillianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
+                                                lijllianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
+                                                illianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
+                                                </p>
+
+                                                <ul> 
+                                                    <li>Underwater Camera</li>
+                                                    <li>Wide-Angle Lens</li>
+                                                    <li>Protective Housing</li>
+                                                    <li>Diving Gear</li>
+                                                    <li>Lighting Equipment</li>
+                                                </ul>
+                                        </td>
+
+
+                                        <td>
+                                                <h3>Safety</h3>
+                                                <p>Always prioritize safety when filming sharks. Work with experienced divers and shark experts, maintain a safe distance, and avoid sudden movements that may provoke the animals.
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum 
+                                                jillianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
+                                                lijllianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
+                                                illianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum 
+                                                </p>
+                                        </td>
+                                    </tr>
+                        </table>
+                    </div>
+
+
+                    <div class="video"><video src="/images/shark-attacks-small.mp4" controls> </video></div>
+
+                    
+                    <div class="footer">
+                        <p class="footer">&copy; 2025 Pawluk Web <Solutions-grid-complex-5></Solutions-chap10-grid-complex-5>-table-2cols </p>
+                    </div>
+        </div>
+
+
+
+    </body>
+
+
+</html>
+
