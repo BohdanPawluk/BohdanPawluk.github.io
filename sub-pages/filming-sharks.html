@@ -1,384 +1,410 @@
+
+
+<!--
+Version 6 notes for this file:
+
+- The "complex-6-Grid-flexbox.html" filename uses "6" to indicate this is the sixth major iteration of the grid/flexbox layout demo.
+- Each version typically adds new layout features, styling improvements, or content changes.
+- In version 6, the file includes:
+    - A CSS Grid-based magazine layout with named grid areas.
+    - Integration of a flexbox-based "table" section using .flex-container, .flex-item, and .flex-cell classes.
+    - Responsive design via media queries for mobile screens.
+    - Updated color schemes and header/footer styling.
+    - Comments and structure for easier future updates.
+- The version number helps track changes and distinguish this layout from earlier prototypes (e.g., complex-5, complex-4).
+
+-->
+
 <!DOCTYPE html>
-
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta Keywords="Shark Filming, Underwater Filming, Marine Life, Sharks, Filmmaking">
-    <meta Description="Explore the thrilling world of filming sharks">
-    <meta Author="Bohdan Pawluk">
-    <title>Filming Sharks - Pawluk Web Solutions</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com"> <!-- Import Google Fonts Preconnect  -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet"> <!-- Use Google Fonts -->
-
+        <title>Filming Sharks</title>
+            <!-- Google Fonts: Creepster -->
+            <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <style>
-       
-        * { margin: 0; padding: 0; }  /* Reset some default styles for boilerplate code */
-        
-            .colorful-text {  /* This is a reusable class for colorful backgrounds on fonts */
-                color: color(srgb 0.3436 0.7482 0.8867);
 
-            }
+            .magazine { /* define grid container with the grid-template-areas property */
+                    display: grid;
+                    grid-template-areas:
+                        "nav nav"
+                        "image image"
+                        "article1 article2 "
+                        "table table"
+                        "video video"
+                        "footer footer";
+                        grid-template-columns: 2fr 2fr;
+                        grid-template-rows: auto 1fr auto auto  auto 100px;
+                        padding: 5px;
+                    }
 
-            .colorful-background {  /* This is a reusable class for colorful backgrounds */
-                background: color(srgb 0.3436 0.7482 0.8867);
-             
-            }
+            .magazine div { /* general style wrapper for all divs within the container adds grid lines  */
+                    background-color: white;; 
+                    padding: 0px;
+                    padding-top:10px;
+                    padding-bottom:10px;
+                    }
 
-            nav {   /* This is the navigation bar style setup */
+            /* define individual grid area classes */
+            .nav { grid-area: nav; }
+
+            .table { 
+                grid-area: table;
+                background-color: #89b6d1; /* ocean blue */
+             }
+
+            .article1 { grid-area: article1;
+                Display: block;
                 width: 100%;
-                margin: 0px; 
-                color: white;
-                padding: 1em;
-                position: fixed;
-                top: 0px;
-                background:color(srgb 0.3436 0.7482 0.8867);
-                z-index: 1000;      
-            }
+                }
+                
+            .article2 { grid-area: article2;
+                    Display: block;
+                    width: 100%;
+                    }
 
+            .image { grid-area: image;
+                    display:block;
+                    width: 100%;
+                    height: auto;
+                    overflow: hidden;
+                }
+
+            .video { grid-area: video; }
+
+            .footer { grid-area: footer; }
+
+            /* Center the title in article1 */
+            .magazine div.article1 h2 {
+                text-align: center;
+            }
             
-             nav ul {
-                list-style-type: none;
+            /* Center the title in article2 */
+            .magazine div.article2 h2 {
+                text-align: center;
+                }
+                
+            /* style for the video element cell within the container that allows responsive behavior */
+            .magazine div.video video { /* style for the video element cell within the container, but the video tag is used */
+                        display: block;
+                        width: 100%;
+                        height: auto;
+                }
+
+            /* style for the image element cell within the container that allows responsive behavior */
+            .magazine div.image img { /* style for the image element cell within the container, but img tag is used */
+                        width: 100%;
+                        height: auto;
+                        background-image:contain;
+                        display: block;
+                }
+
+            /* Set blue background for nav area */
+            .magazine div.nav {
+                width:100%;
+                display:block;
+                background-color: #0077be; /* ocean blue, matches .creepster-title */
+            }
+
+            /* Formating the navigation links */ 
+
+            .magazine div.nav nav {   /* This is the navigation bar style setup */
+                        
+                        width: 100%;
+                        display:block;
+                        color: white;
+                        padding: 0px;
+                        background: color #80acc6; /* ocean blue */
+
+                    }
+
+            .magazine div.nav ul {
+                display: flex;
+                justify-content: center;
+                align-items:center;
                 padding: 0;
-                 display:flex; 
-                justify-content: center; 
-            } 
-
-            nav ul li {
-                float: left; 
-                margin-right: 12em; /* Adjust the menu items spacing on the nav bar for larger screens */
-                 margin-left: 5em; 
+                margin: 0;
+                list-style: none;
             }
 
-            nav ul li a {
+            .magazine div.nav ul li {
+                flex: 1 1 auto;
+                text-align: center;
+            }
+
+            .magazine div.nav ul li a {
+                /* Restore original link formatting */
                 color: white;
-                text-decoration: none;
-                text-align:center; 
-                font-size: 2.5em; /* Add this line to increase font size */
+                text-decoration: underline;
+                display: inline-block;
+                text-align:vertical; 
+                font-size: 2em;
+                transition: background 0.2s, color 0.2s;
             }
 
-              nav ul li a:hover {
+            .magazine div.nav ul li a:hover {
                 text-decoration: none;
                 color: #ff00f2;
             } 
 
-
-
-
-            .creepster-font {
-            font-family: "Creepster", system-ui;
-            font-weight: 400;
-            font-style: normal;
-            }
-
-
-
-
-            #shark-content {
-                width:90%;
-                margin-top:120px;
-                margin-left:auto;
-                margin-right:auto;
-                margin-bottom:30px;
-            }
-
-            #shark-image {
+            /* Creepster font for the image title */
+            .creepster-title {
+                position: absolute;
+                left: 0;
+                bottom: 20px;
                 width: 100%;
-                margin-top: 50px;
-                background: url(/images/shark-attacks.jpg) no-repeat left center;
-                background-size: cover;
-                height: 90vh; /* Responsive height for large screens */
-                min-height: 350px; /* Ensures it's not too small on short screens */
-                max-height: 1200px; /* Prevents it from being too tall on very large screens, this is set for Most common for 27-inch monitors: 2560 × 1440 pixels */
+                text-align: center;
+                font-family: 'Creepster', cursive;
+                font-size: 3em;
+                color: #80acc6; /* ocean blue */
+                text-shadow: 2px 2px 8px #000, 0 0 10px #000;
+                pointer-events: none;
+                z-index: 2;
+            }
+
+            /* Ensure .image is positioned relative for absolute child */
+            .magazine .image {
+                position: relative;
+            }
+
+            .magazine div.table table{
+                            display:table; 
+                            margin:auto;
+                            width: 100%;
+                            background-color:#aecdd6;
+                        }
+
+            .magazine .table table tr {
                 display: flex;
-                color: white;  /* Text color for overlay text */
-                border-radius: 12px;
-                overflow: hidden; 
-                position:relative; 
-                 
             }
 
-        #shark-image p { /* Overlay text style at the bottom of the image */
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
-            text-align: center;
-            font-size: 3.5em;            
-        }
+            .magazine div.table table td { 
+                            /* display: table-cell; */
+                            flex: 1 1 auto;
+                            padding: 16px;
+                            vertical-align: top;
+                            width:auto;
+                }
 
-
-
-            #ls-content { /* Left side content container */
-                width:45%;
-                margin-top:50px;
-                float:left;
-                margin-bottom:30px;
+            /* Center the h3 titles in each table cell */
+            .magazine div.table td h3 {
+                text-align: center;
             }
 
-            #rs-content { /* Right side content container */
-                width:45%;
-                margin-top:50px;
-                float:right;
-                margin-bottom:30px;
-            }
-
-
-
-            #shark-table { 
-                display:table;
-                margin:auto;
+            .magazine div.footer  {
                 width: 100%;
-                background-color:#bfebf8;
+                background-color: #0077be; /* ocean blue, or use #80acc6 for a lighter blue */
+                color: #fff;
+                text-align: center;
+                padding: 20px 0;
+                font-size: 1.2em;
+                font-family: Arial, sans-serif;
+                letter-spacing: 1px;
+                border-top: 4px solid #80acc6; /* accent line */
+            }
+
+            /* Add this CSS for a new flexbox container class */
+
+            .flex-container {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: flex-start;
+                gap: 20px;
+                width: 100%;
+                padding: 10px;
+                box-sizing: border-box;
+                background-color: #82b3e3;
+                border-radius: 8px;
             }
 
 
 
+            /* Add this CSS for a new flex item class to be used inside .flex-container */
 
-            .shark-cell {
-                display: table-cell;
+            .flex-item {
+                flex: 1 1 200px;
+                margin: 10px;
+                margin-left: 24px; /* increase left margin */
                 padding: 16px;
-                vertical-align: top;
-                width:auto;
+                background-color: #cbeafe; /* light sky blue */
+                border-radius: 6px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+                font-family: Arial, sans-serif;
+            }
+
+            /* Add this CSS for a new flex cell class to contain cell content */
+
+            .flex-cell {
+                flex: 1 1 180px;
+                margin-left: 24px; /* increase left margin */
+                margin: 8px 0;
+                padding: 14px;
+                background-color: #cbeafe; /* light sky blue */
+                border-radius: 4px;
+                box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+                font-family: Arial, sans-serif;
+                overflow: hidden;
             }
 
 
-
-             #shark-video  { /* Shark video container, that holds the video element */
-                width:100%;
-                margin-left: auto;
-                margin-right:auto;
-                margin-top:30px;
-                clear:both;
-                
-                }
-        
-            
-             video { /* this is my code for the #shark-video, the video had to be coverted to a smaller size. I used ffmpeg to create a smaller version */
-                width:90%; 
-                height:auto;
-                display:block;
-                margin-left:auto;
-                margin-right:auto;
-                border-radius:12px;
-                
+            /* Center the h3 titles in each flex cell */
+            .flex-cell h3 {
+                text-align: center;
             }
 
 
-                ul {
-                    margin-top: 10px;
-                    margin-left: 20px;
-                    margin-bottom: 10px;
-                }
+            /* Style the unordered lists within flex cells */
+            .flex-cell ul {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                padding-left: 0;
+                margin: 0 auto;
+                list-style-position: inside;
+            }
 
-                li {
-                    margin-bottom: 5px;
-                    list-style: none;
-                    font-size:0.75em;
-                }
-            
-
+            /* override background colors for flex items and cells within the table area */
+            .magazine .flex-item,
+            .magazine .flex-cell {
+                background-color: #cbeafe !important; /* light sky blue, override white */
+            }
 
 
             /* Adjust left and right side content for smaller screens, like mobile devices, rs-content container will
             be pushed below ls-content */
-            @media screen and (max-width: 712px) {
+            @media screen and (max-width: 600px) {
 
-                #shark-content {
-                    width: 95%;
-                    margin-top:80px;
-                }
+                 .magazine { /* define grid container with the grid-template-areas property */
+                    display: grid;
+                    grid-template-areas:
+                        "nav"
+                        "image"
+                        "article1"
+                         "article2"
+                        "table"
+                        "video"
+                        "footer";
+                        grid-template-columns: 1fr;
+                        grid-template-rows: auto 1fr auto auto auto auto 100px;
+                        /* gap: 5px; */
+                        /* background-color: black; remove the grid lines */ 
+                        padding: 5px;
+                    }
 
-                #ls-content, #rs-content { /* Both containers take full width on small screens, the sit in  shark-content*/
-                    width: 95%;
-                    float: left;
-                    margin-left: 2.5%; /* Ensures both start at the same left position */
-                    margin-bottom:10px;
-                }
-            
-                nav ul li {
-                   float: left; 
-                    margin-right: 4em; /* Adjust the menu items spacing on the nav bar for smaller screens */
-                    margin-left: 2em;
-             }
-
-
-
-                nav ul li a {
-                    color: white;
-                    text-decoration: none;
-                    text-align:center; 
-                    font-size: 1.25em; /* Add this line to increase font size */
-                }
-
-                #rs-content {
-                    clear: both;
-                    margin-bottom:30px;
-                }
-                
-
-                h1,h2 {
-                    font-size: 1.5em;
-                    text-align:center;
-                   
-                }
-                
-                p {
-                    font-size: 1em;
-                }
-
-       
-
-                #shark-image {
-                    height: 180px;
-                    font-size: 0.95em;
-                    margin-top: 30px;
-                    
-                }
+                        .magazine .article1, .magazine .article2 {
+                        font-size: 1.5em;
+                    }
 
 
-                #shark-image p { /* Overlay text style at the bottom of the image for p tag */
-                    position: absolute;
-                    bottom: 20px;
-                    width: 100%;
-                    text-align: center;
-                    margin: 0;
-                    left: 0;
-                    font-size: 1.5em;            
-                 }
+                        .magazine .table table tr {
+                            flex-direction: column;
+                            display: flex;
+                        }
+                        .magazine .table table td {
+                            width: 100%;
+                            box-sizing: border-box;
+                            font-size: 1.5em;
+                        }
+
+                    .creepster-title {
+                        font-size: 2.5em;
+                        z-index: 2;
+                    }
             }
 
 
 
-     main { /* Main content container styling this holds the main content, including all text and media */
-            max-width: 90%;
-             margin: 0 auto;
-            padding: 20px;
-            font-size:1em;
-            }
-    
-     h1,h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            
-        }
-
-        footer {
-            text-align: center;
-            padding: 10px;
-            color: white;
-            bottom: 0;
-            width: 100%;
-        }
 
 </style>
 
 
-<body> 
-    <nav class="colorful-text" class="colorful-background">
-        <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="my-work.html">My Work</a></li>           
-            <li><a href="contact-form.html">Contact</a></li>
-        </ul>
-    </nav>
+    <body>
+
+        <div class="magazine">
+                    <div class="nav"><ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Contact</a></li></ul>
+                    </div>
+
+                    <div class="image"><img src="/images/shark-attacks.jpg" alt="Feature Image"></img></div>
+                        <div class="image">
+                            <img src="/images/shark-attacks.jpg" alt="Feature Image">
+                            <div class="creepster-title">Predators of the Deep</div>
+                        </div>
+
+
+                    <div class="article1">
+
+                            <h2>Left Side Content</h2>
+                                <p>This is some content on the left side. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                jillianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
+                                lijllianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
+                                illianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
+                                </p>
+                     </div>
 
 
 
-        <main>
-            <div id="shark-content">
-                <h1 class="colorful-text">Filming Sharks</h1>
-                <p>Explore the thrilling world of filming sharks with our expert tips and techniques. Learn how to capture stunning underwater footage while ensuring safety and respect for these magnificent creatures.</p>
-
-
-
-                <div id="shark-image">
-                <!-- this div is blank for now-->   
-
-                    <p class="creepster-font">Predators of the Deep</p>
-
-                </div>
-
-
-                <div  id="ls-content">
-                    <h2 class="colorful-text">Left Side Content</h2>
-                    <p>This is some content on the left side. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                    jillianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
-                    lijllianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
-                    illianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id numquam magnam dolores rerum quisquam.
-                     Quae, esse beatae reiciendis ea repudiandae dolores commodi ut, voluptas eos suscipit laudantium tenetur omnis! 
-                     Aliquid?
-                    </p>
-
-                </div>
-
-     
-                                
-                <div  id="rs-content">
-                    <h2 class="colorful-text">Right Side Content</h2>
-                    <p>This is some content on the right side. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                    jillianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
-                    lijllianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
-                    illianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id numquam magnam dolores rerum quisquam.
-                     Quae, esse beatae reiciendis ea repudiandae dolores commodi ut, voluptas eos suscipit laudantium tenetur omnis! 
-                     Aliquid?
-                    </p>
-                </div>
-
-
-
-                <!-- this is the table containing the cell colums that are holding the content in a table format-->
-                <div id="shark-table">
-                    
-                     <div class="shark-cell">
-                                <h3>Equipment</h3>
-                                <p>Use high-quality underwater cameras and housings to withstand the pressure and conditions of the ocean. 
-                                Consider using wide-angle lenses to capture the full scope of shark movements. Lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum 
+                     <div class="article2">
+                            <h2>Right Side Content</h2>
+                                <p>This is some content on the right side. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                                 jillianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
                                 lijllianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
                                 illianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
                                 </p>
 
-                                <ul> 
-                                    <li>Underwater Camera</li>
-                                    <li>Wide-Angle Lens</li>
-                                    <li>Protective Housing</li>
-                                    <li>Diving Gear</li>
-                                    <li>Lighting Equipment</li>
-                                </ul>
-                      </div>
 
-                     <div class="shark-cell">
-                                <h3>Safety</h3>
-                                <p>Always prioritize safety when filming sharks. Work with experienced divers and shark experts, maintain a safe distance, and avoid sudden movements that may provoke the animals.
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum 
-                                jillianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
-                                lijllianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
-                                illianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum 
-                                </p>
                      </div>
-                                         
-                </div>
+        
+                    <div class="table flex-container">
+                                 <div class="flex-item flex-cell">
+                                                <h3>Equipment</h3>
+                                                <p>Use high-quality underwater cameras and housings to withstand the pressure and conditions of the ocean. 
+                                                Consider using wide-angle lenses to capture the full scope of shark movements. Lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum 
+                                                jillianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
+                                                lijllianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
+                                                illianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
+                                                </p>
 
-            </div>   
-       
+                                                <ul> 
+                                                    <li>Underwater Camera</li>
+                                                    <li>Wide-Angle Lens</li>
+                                                    <li>Protective Housing</li>
+                                                    <li>Diving Gear</li>
+                                                    <li>Lighting Equipment</li>
+                                                </ul>
 
-         <div id="shark-video">
+                                     </div>
+                                 <div class="flex-item flex-cell">  
+                                                <h3>Safety</h3>
+                                                <p>Always prioritize safety when filming sharks. Work with experienced divers and shark experts, maintain a safe distance, and avoid sudden movements that may provoke the animals.
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum 
+                                                jillianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
+                                                lijllianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum
+                                                illianm ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum 
+                                                </p>
+                                 </div>
+                    </div>
 
-           <video src="/images/shark-attacks-small.mp4"   controls></video>
-         </div>
-            
-        </main>
+
+                    <div class="video"><video src="/images/shark-attacks-small.mp4" controls> </video></div>
+
+                    
+                    <div class="footer">
+                        <p class="footer">&copy; 2025 Pawluk Web Solutions</p>
+                    </div>
+        </div>
+
+
 
     </body>
 
-    <footer class="colorful-background">
-        <p>&copy; 2024 Pawluk Web Solutions</p>
-    </footer>   
 
 </html>
+
