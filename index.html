@@ -20,6 +20,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pawluk Web Solutions</title>
     <link rel="stylesheet" href="../styles.css">
+    <!-- use Bootstrap for responsive design -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Orbitron:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    
+    
+    
+    
     <style>
 
         /* This is the navigation bar style setup */
@@ -61,21 +73,21 @@
             }
 
 
+            body, .welcome-message, p, a, nav ul li a {
+            font-family: 'Orbitron', Arial, sans-serif;
+            }
+
         main {
-            margin: 2rem auto;
+            margin: 0 auto;
             width: 90%;
             max-width: 900px;
-            padding: 30px;
+            padding: 0;
             display: block;
             background-image: url(/images/rolling-globe-media.mp4);
-
-            /* background-image: url(https://cdn.pixabay.com/video/2016/09/13/5194-183786499_tiny.mp4);
-            /* background-image: url(https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZG5mMDc4NW93azVyYmx4MDNkM3ZxMnlucHkyb2w2dmIxeGMzZjFuOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3YHzWhog1v3HBk3oXm/giphy.gif); */
-            /* background-image: url(https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDZ2YTAzOGp0dzhnYmtpMmt5eThrMHM4ZmZ6ZzN1MWV6aThtZTl2diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YkXNjAkG7CfEVx3gcy/giphy.gif); */
             background-repeat: no-repeat;
             background-size: contain;
             background-position: center;
-            padding-bottom: 60%;
+            
         }
 
 
@@ -84,7 +96,7 @@
                 left: 0;
                 bottom: 0;
                 width: 100%;
-                z-index: 10;
+                z-index: 100; 
                 background: rgba(35, 40, 42, 0.8);
                 color: #fff;
                 text-align: center;
@@ -95,29 +107,23 @@
         @media screen and (max-width: 390px) {
             main {
                 background-image: url(/images/rolling-globe-media.mp4);
-
-                /* background-image: url(https://cdn.pixabay.com/video/2016/09/13/5194-183786499_tiny.mp4);
-                /* background-image: url(https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZG5mMDc4NW93azVyYmx4MDNkM3ZxMnlucHkyb2w2dmIxeGMzZjFuOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3YHzWhog1v3HBk3oXm/giphy.gif); */
-                /* background-image: url(https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDZ2YTAzOGp0dzhnYmtpMmt5eThrMHM4ZmZ6ZzN1MWV6aThtZTl2diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YkXNjAkG7CfEVx3gcy/giphy.gif); */
                 background-repeat: no-repeat;
                 background-size: contain;
                 background-position: center;
-                padding-bottom: 60%;
+            
             }
         }
 
         @media screen and (min-width:900px) {
             main {
                 background-image: url(/images/rolling-globe-media.mp4);
-                /* background-image: url(https://cdn.pixabay.com/video/2016/09/13/5194-183786499_tiny.mp4);
-                /* background-image: url(https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZG5mMDc4NW93azVyYmx4MDNkM3ZxMnlucHkyb2w2dmIxeGMzZjFuOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3YHzWhog1v3HBk3oXm/giphy.gif); */
-                /* background-image: url(https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDZ2YTAzOGp0dzhnYmtpMmt5eThrMHM4ZmZ6ZzN1MWV6aThtZTl2diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YkXNjAkG7CfEVx3gcy/giphy.gif); */
                 background-repeat: no-repeat;
                 background-size: contain;
                 background-position: center;
-                padding-bottom: 25%;
+            
             }
         }
+
 
 
         body {
@@ -126,11 +132,10 @@
             color: #FFFFFF;
             font-family: Arial, sans-serif;
             font-size: 1em;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
+            /* Remove display: flex, justify-content, align-items, and overflow: hidden */
         }
+
+
 
         .welcome-message {top:0px;
             position: absolute;
@@ -154,16 +159,38 @@
 
 <body>
 
-        <nav>
-            <ul>
-                <li><a href="/sub-pages/my-work.html">My Work</a></li>
-                <li><a href="/sub-pages/webpage-building-process.html">Webpage Building</a></li>
-            </ul>
-        </nav>
 
 
 
-   
+
+
+<nav>
+    <ul>
+        <li>
+            <a href="/sub-pages/my-work.html" class="btn btn-secondary mx-1">
+                <i class="bi bi-briefcase"></i>  Work
+            </a>
+        </li>
+        <li>
+            <a href="/sub-pages/webpage-building-process.html" class="btn btn-secondary mx-1">
+                <i class="bi bi-palette"></i>  Design
+            </a>
+        </li>
+        <li>
+            <a href="/sub-pages/contact-form.html" class="btn btn-secondary mx-1">
+                <i class="bi bi-envelope"></i>  Contact
+            </a>
+        </li>
+        <li>
+            <button id="pause-audio-btn" class="btn btn-secondary mx-1" type="button">
+                <i class="bi bi-volume-mute"></i>  Audio
+            </button>    
+        </li>
+    </ul>
+</nav>
+
+
+
 
     <!--Add in the image of the world that I have in my images folder-->
     
@@ -190,9 +217,14 @@
   <!-- Your main content here -->
  <!-- Test video player for audio -->
 
-<button id="pause-audio-btn" style="position: absolute; top: 20px; right: 20px; z-index: 2;">Pause Audio</button>
- <!--Flashing Welcome Message-->
+<!-- <button id="pause-audio-btn" style="position: absolute; top: 20px; right: 20px; z-index: 2;">Pause Audio</button> -->
+ <!--
    <div class="welcome-message">We bring the world to you</div>
+Flashing Welcome Message-->
+
+
+
+
 
 </main>
     <script>
@@ -212,23 +244,31 @@
 
 
 
-// Pause audio button logic
-    document.getElementById('pause-audio-btn').addEventListener('click', function(e) {
-        e.stopPropagation(); // Prevents triggering the unmute logic
-        var vid = document.getElementById('bgvideo');
-        if (!vid.muted) {
-            vid.muted = true;
-            this.textContent = 'Play Audio';
-        } else {
-            vid.muted = false;
-            this.textContent = 'Pause Audio';
-        }
-    });
+
+
+
+document.getElementById('pause-audio-btn').addEventListener('click', function(e) {
+    e.stopPropagation();
+    var vid = document.getElementById('bgvideo');
+    var icon = this.querySelector('i');
+    if (!vid.muted) {
+        vid.muted = true;
+        icon.className = 'bi bi-volume-mute';
+        this.childNodes[1].nodeValue = ' Play Audio';
+    } else {
+        vid.muted = false;
+        icon.className = 'bi bi-volume-up';
+        this.childNodes[1].nodeValue = ' Pause Audio';
+    }
+});
+
+
 
     </script>
   </body>
 
 <footer>
-    <p>&copy; 2025 Pawluk Web Solutions</p>
+        <p>We bring the world to you</p>
+        <p>&copy; 2025 Pawluk Web Solutions</p>
 </footer>
 </html>
