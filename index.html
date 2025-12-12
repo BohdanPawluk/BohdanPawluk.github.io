@@ -24,9 +24,9 @@
 
         /* This is the navigation bar style setup */
             nav {
+                z-index: 10;
                 width: 100%;
                 margin: 0px; 
-                /* background-color: #171c17; */
                 color: white;
                 padding: 1em;
                 position:fixed;
@@ -57,6 +57,7 @@
 
             nav ul li a:hover {
                 text-decoration: none;
+                color: #FFD700;
             }
 
 
@@ -65,9 +66,11 @@
             width: 90%;
             max-width: 900px;
             padding: 30px;
-            /* background-color: olive; */
             display: block;
-            background-image: url(https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZG5mMDc4NW93azVyYmx4MDNkM3ZxMnlucHkyb2w2dmIxeGMzZjFuOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3YHzWhog1v3HBk3oXm/giphy.gif);
+            background-image: url(/images/rolling-globe-media.mp4);
+
+            /* background-image: url(https://cdn.pixabay.com/video/2016/09/13/5194-183786499_tiny.mp4);
+            /* background-image: url(https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZG5mMDc4NW93azVyYmx4MDNkM3ZxMnlucHkyb2w2dmIxeGMzZjFuOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3YHzWhog1v3HBk3oXm/giphy.gif); */
             /* background-image: url(https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDZ2YTAzOGp0dzhnYmtpMmt5eThrMHM4ZmZ6ZzN1MWV6aThtZTl2diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YkXNjAkG7CfEVx3gcy/giphy.gif); */
             background-repeat: no-repeat;
             background-size: contain;
@@ -75,14 +78,26 @@
             padding-bottom: 60%;
         }
 
+
+            footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                z-index: 10;
+                background: rgba(35, 40, 42, 0.8);
+                color: #fff;
+                text-align: center;
+                padding: 1em 0;
+            }
+
         /* if the screen or browser window is less than 393px change the background color */
         @media screen and (max-width: 390px) {
             main {
-                /* background-color: #88A5E0; */
-                /*margin:10px auto; */
-                /*margin-right: 50px;*/
-                /*margin-left:10px;*/
-                background-image: url(https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZG5mMDc4NW93azVyYmx4MDNkM3ZxMnlucHkyb2w2dmIxeGMzZjFuOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3YHzWhog1v3HBk3oXm/giphy.gif);
+                background-image: url(/images/rolling-globe-media.mp4);
+
+                /* background-image: url(https://cdn.pixabay.com/video/2016/09/13/5194-183786499_tiny.mp4);
+                /* background-image: url(https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZG5mMDc4NW93azVyYmx4MDNkM3ZxMnlucHkyb2w2dmIxeGMzZjFuOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3YHzWhog1v3HBk3oXm/giphy.gif); */
                 /* background-image: url(https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDZ2YTAzOGp0dzhnYmtpMmt5eThrMHM4ZmZ6ZzN1MWV6aThtZTl2diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YkXNjAkG7CfEVx3gcy/giphy.gif); */
                 background-repeat: no-repeat;
                 background-size: contain;
@@ -93,12 +108,11 @@
 
         @media screen and (min-width:900px) {
             main {
-                /* margin:10px auto; */
-                /* margin-right: 50px; */
-                background-image: url(https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZG5mMDc4NW93azVyYmx4MDNkM3ZxMnlucHkyb2w2dmIxeGMzZjFuOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3YHzWhog1v3HBk3oXm/giphy.gif);
+                background-image: url(/images/rolling-globe-media.mp4);
+                /* background-image: url(https://cdn.pixabay.com/video/2016/09/13/5194-183786499_tiny.mp4);
+                /* background-image: url(https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZG5mMDc4NW93azVyYmx4MDNkM3ZxMnlucHkyb2w2dmIxeGMzZjFuOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3YHzWhog1v3HBk3oXm/giphy.gif); */
                 /* background-image: url(https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDZ2YTAzOGp0dzhnYmtpMmt5eThrMHM4ZmZ6ZzN1MWV6aThtZTl2diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YkXNjAkG7CfEVx3gcy/giphy.gif); */
                 background-repeat: no-repeat;
-                /* background-size: cover; */
                 background-size: contain;
                 background-position: center;
                 padding-bottom: 25%;
@@ -108,7 +122,6 @@
 
         body {
             margin: 0;
-            /* min-height: 300px; */
             background-color: #23282A;
             color: #FFFFFF;
             font-family: Arial, sans-serif;
@@ -121,7 +134,7 @@
 
         .welcome-message {top:0px;
             position: absolute;
-            top: 100px;
+            top: 300px;
             left: 0px;
             right: 0px;
             text-align: center;
@@ -150,24 +163,68 @@
 
 
 
-    <!--Flashing Welcome Message-->
-   <div class="welcome-message">Welcome to Pawluk Web Solutions</div>
+   
 
     <!--Add in the image of the world that I have in my images folder-->
     
-    <main>
-        
-           
+    <main style="position:relative; z-index:1;">
+        <video
+            src="/images/rolling-globe-media4.mp4"
+            autoplay
+            loop
+            playsinline
+            style="
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100vw;
+            min-height: 100vh;
+            width: auto;
+            height: auto;
+            object-fit: cover;
+            z-index: -1;
+            background: #23282A;
+            "
+            id="bgvideo"
+        ></video>
+  <!-- Your main content here -->
+ <!-- Test video player for audio -->
 
-    </main>
-        <button onclick="openForm()">Open Contact Form</button>
+<button id="pause-audio-btn" style="position: absolute; top: 20px; right: 20px; z-index: 2;">Pause Audio</button>
+ <!--Flashing Welcome Message-->
+   <div class="welcome-message">We bring the world to you</div>
 
-     <p> We use creativity and innovation to bring the world to your fingertips.</p>
-        
+</main>
     <script>
-        function openForm() {
-            window.open('/sub-pages/contact-form.html', '_blank', 'width=600,height=800');
+        document.addEventListener('click', function() {
+            var vid = document.getElementById('bgvideo');
+            vid.muted = false;
+            vid.pause();
+            vid.currentTime = 0;
+            vid.play();
+        }, { once: true });
+
+
+        var vid = document.getElementById('bgvideo');
+        vid.addEventListener('error', function(e) {
+            console.error('Video error:', e);
+        });
+
+
+
+// Pause audio button logic
+    document.getElementById('pause-audio-btn').addEventListener('click', function(e) {
+        e.stopPropagation(); // Prevents triggering the unmute logic
+        var vid = document.getElementById('bgvideo');
+        if (!vid.muted) {
+            vid.muted = true;
+            this.textContent = 'Play Audio';
+        } else {
+            vid.muted = false;
+            this.textContent = 'Pause Audio';
         }
+    });
+
     </script>
   </body>
 
