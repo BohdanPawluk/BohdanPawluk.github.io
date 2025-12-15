@@ -2,16 +2,6 @@
 <html lang="en">
   
  
-<header>
-
-    <meta charset="UTF-8">
-    <meta Keywords="HTML, CSS, JavaScript, Web Development, Web Design">
-    <meta Description="Welcome to Pawluk Web Solutions, where we create stunning websites tailored to your needs.">
-    <meta Author="Bohdan Pawluk">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pawluk Web Solutions</title>
-
-</header>
 <head>
     <meta charset="UTF-8">
     <meta Keywords="HTML, CSS, JavaScript, Web Development, Web Design">
@@ -21,18 +11,10 @@
     <title>Pawluk Web Solutions</title>
     <!-- use Bootstrap for responsive design -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Orbitron:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     
-    
-    
-    
-    
     <style>
-
         /* This is the navigation bar style setup */
             nav {
                 z-index: 10;
@@ -72,22 +54,22 @@
             }
 
 
-            body, .welcome-message, p, a, nav ul li a {
+            body, p, a, nav ul li a {
             font-family: 'Orbitron', Arial, sans-serif;
             }
 
-        main {
-            margin: 0 auto;
-            width: 90%;
-            max-width: 900px;
-            padding: 0;
-            display: block;
-            background-image: url(/images/rolling-globe-media.mp4);
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-            
-        }
+            main {
+                margin: 0 auto;
+                width: 90%;
+                max-width: 900px;
+                padding: 0;
+                display: block;
+                background-image: url(/images/rolling-globe-media4.mp4);
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                
+            }
 
 
             footer {
@@ -103,25 +85,25 @@
             }
 
         /* if the screen or browser window is less than 393px change the background color */
-        @media screen and (max-width: 390px) {
-            main {
-                background-image: url(/images/rolling-globe-media.mp4);
-                background-repeat: no-repeat;
-                background-size: contain;
-                background-position: center;
-            
+            @media screen and (max-width: 390px) {
+                main {
+                    background-image: url(/images/rolling-globe-media4.mp4);
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    background-position: center;
+                
+                }
             }
-        }
 
-        @media screen and (min-width:900px) {
-            main {
-                background-image: url(/images/rolling-globe-media.mp4);
-                background-repeat: no-repeat;
-                background-size: contain;
-                background-position: center;
-            
+            @media screen and (min-width:900px) {
+                main {
+                    background-image: url(/images/rolling-globe-media4.mp4);
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    background-position: center;
+                
+                }
             }
-        }
 
 
 
@@ -135,14 +117,6 @@
 
 
 
-        .welcome-message {top:0px;
-            position: absolute;
-            top: 300px;
-            left: 0px;
-            right: 0px;
-            text-align: center;
-            animation: fadeInOut 5s infinite;
-        }
 
         @keyframes fadeInOut {
             0%, 100% {
@@ -155,204 +129,114 @@
     </style>
 </head>
 
-<body>
+    <body>
 
 
+            <!-- New hamburger menu navbar-->
+
+                <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+                <a class="navbar-brand" href="#">Pawluk Web Solutions</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse ml-auto" id="mainNavbar">
+                    <ul class="navbar-nav ml-auto">
+                    <li class="nav-item mx-2 my-2">
+                        <a class="nav-link btn btn-sm btn-secondary" href="/sub-pages/my-work.html"><i class="bi bi-briefcase"></i></a>
+                    </li>
+                    <li class="nav-item mx-2 my-2">
+                        <a class="nav-link btn btn-sm btn-secondary" href="/sub-pages/webpage-building-process.html"><i class="bi bi-palette"></i></a>
+                    </li>
+                    <li class="nav-item mx-2 my-2">
+                        <a class="nav-link btn btn-sm btn-secondary" href="/sub-pages/contact-form.html"><i class="bi bi-envelope"></i></a>
+                    </li>
+                    <li class="nav-item mx-2 my-2">
+                        <button id="pause-audio-btn" class="btn btn-sm btn-secondary nav-link" >
+                        <i class="bi bi-volume-mute"></i>
+                        </button>
+                    </li>
+                    <li class="nav-item mx-2 my-2">
+                        <button id="pause-video-btn" class="btn btn-sm btn-secondary nav-link" >
+                        <i class="bi bi-pause-circle"></i>
+                        </button>
+                    </li>
+                    </ul>
+                </div>
+                </nav>
+
+                <!-- Your main content here -->
+                <main style="position:relative; z-index:1;">
+                    <video
+                        src="/images/rolling-globe-media4.mp4"
+                        loop
+                        playsinline
+                        controls
+                        style="
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100vw;
+                        height: 100vh;
+                        object-fit: cover;
+                        z-index: -1;
+                        background: #23282A;
+                        "
+                        id="bgvideo"
+                    ></video>
+
+                </main>
+
+                <!-- Include jQuery, Popper.js, and Bootstrap JS -->
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
-
-<!-- original navigation bar code 
-<nav>
-    <ul>
-        <li>
-            <a href="/sub-pages/my-work.html" class="btn btn-secondary mx-1">
-                <i class="bi bi-briefcase"></i>  
-            </a>
-        </li>
-        <li>
-            <a href="/sub-pages/webpage-building-process.html" class="btn btn-secondary mx-1">
-                <i class="bi bi-palette"></i>  
-            </a>
-        </li>
-        <li>
-            <a href="/sub-pages/contact-form.html" class="btn btn-secondary mx-1">
-                <i class="bi bi-envelope"></i>  
-            </a>
-        </li>
-        <li>
-            <button id="pause-audio-btn" class="btn btn-secondary mx-1" type="button">
-                <i class="bi bi-volume-mute"></i>  
-            </button>    
-        </li>
-
-        <li>
-            <button id="pause-video-btn" class="btn btn-secondary" type="button">
-                <i class="bi bi-pause-circle"></i>  
-            </button>
-
-        </li>
+                <!-- New script to handle video play/pause and audio mute/unmute -->
+                <script>
+                        /* New code to handle video and audio controls */
+                            const vid = document.getElementById('bgvideo');
+                            const navbar = document.querySelector('.navbar');
+                            const toggler = document.querySelector('.navbar-toggler');
 
 
-    </ul>
-</nav>
--->
+                        vid.addEventListener('error', function(e) {
+                            console.error('Video error:', e);
+                        });
+
+                        document.getElementById('pause-audio-btn').addEventListener('click', function(e) {
+                            /* e.stopPropagation(); allows the event to bubble up*/
+                            var icon = this.querySelector('i');
+                            if (!vid.muted) {
+                                vid.muted = true;
+                                icon.className = 'bi bi-volume-mute';
+                            } else {
+                                vid.muted = false;
+                                icon.className = 'bi bi-volume-up';
+                            }
+                        });
+
+                        document.getElementById('pause-video-btn').addEventListener('click', function(e) {
+                            /* e.stopPropagation(); allows the event to bubble up*/
+                            const icon = this.querySelector('i');
+                            if (!vid.paused) {
+                                vid.pause();
+                                icon.className = 'bi bi-play-circle';
+                                
+                            } else {
+                                vid.play();
+                                icon.className = 'bi bi-pause-circle';
+                            }
+                        });
+                </script>
 
 
-<!-- New hamburger menu navbar-->
+        <footer>
+                <p>We bring the world to you</p>
+                <p>&copy; 2025 Pawluk Web Solutions</p>
+        </footer>
 
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="#">Pawluk Web Solutions</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    </body>
 
-  <div class="collapse navbar-collapse ml-auto" id="mainNavbar">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item mx-2 my-2">
-        <a class="nav-link btn btn-sm btn-secondary" href="/sub-pages/my-work.html"><i class="bi bi-briefcase"></i></a>
-      </li>
-      <li class="nav-item mx-2 my-2">
-        <a class="nav-link btn btn-sm btn-secondary" href="/sub-pages/webpage-building-process.html"><i class="bi bi-palette"></i></a>
-      </li>
-      <li class="nav-item mx-2 my-2">
-        <a class="nav-link btn btn-sm btn-secondary" href="/sub-pages/contact-form.html"><i class="bi bi-envelope"></i></a>
-      </li>
-      <li class="nav-item mx-2 my-2">
-        <button id="pause-audio-btn" class="btn btn-sm btn-secondary nav-link" >
-          <i class="bi bi-volume-mute"></i>
-        </button>
-      </li>
-      <li class="nav-item mx-2 my-2">
-        <button id="pause-video-btn" class="btn btn-sm btn-secondary nav-link" >
-          <i class="bi bi-pause-circle"></i>
-        </button>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-
-
-    <!--Add in the image of the world that I have in my images folder-->
-    
-    <main style="position:relative; z-index:1;">
-        <video
-            src="/images/rolling-globe-media4.mp4"
-            loop
-            playsinline
-            muted
-            controls
-            style="
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            z-index: -1;
-            background: #23282A;
-            "
-            id="bgvideo"
-        ></video>
-  <!-- Your main content here -->
- <!-- Test video player for audio -->
-
-<!-- <button id="pause-audio-btn" style="position: absolute; top: 20px; right: 20px; z-index: 2;">Pause Audio</button> -->
- <!--
-   <div class="welcome-message">We bring the world to you</div>
-Flashing Welcome Message-->
-
-
-
-
-
-</main>
-
-<!-- New script to handle video play/pause and audio mute/unmute -->
-<script>
-    
-    
-    
-    /* original code to play video on first click - commented out
-    const vid = document.getElementById('bgvideo');
-
-    // Play video on first click anywhere except on control buttons
-    document.addEventListener('click', function(e) {
-        // Ignore clicks on the audio or video control buttons
-        if (
-            e.target.closest('#pause-audio-btn') ||
-            e.target.closest('#pause-video-btn')
-        ) {
-            return;
-        }
-        if (vid.paused) {
-            vid.play();
-        }
-    });
-    */
-
-
-    /* New code to handle video and audio controls */
-        const vid = document.getElementById('bgvideo');
-        const navbar = document.querySelector('.navbar');
-        const toggler = document.querySelector('.navbar-toggler');
-
-
-            // Play video on first click anywhere except on navbar or toggler
-        /* document.addEventListener('click', function(e) {
-            // Ignore clicks on navbar or toggler
-            if (
-                e.target.closest('.navbar') ||
-                e.target.closest('.navbar-toggler')
-            ) {
-                return;
-            }
-            if (vid.paused) {
-                vid.play();
-            }
-        });
-
-        */
-    
-
-
-    vid.addEventListener('error', function(e) {
-        console.error('Video error:', e);
-    });
-
-    document.getElementById('pause-audio-btn').addEventListener('click', function(e) {
-        /* e.stopPropagation(); */
-        var icon = this.querySelector('i');
-        if (!vid.muted) {
-            vid.muted = true;
-            icon.className = 'bi bi-volume-mute';
-            this.childNodes[1].nodeValue = ' Play Audio';
-        } else {
-            vid.muted = false;
-            icon.className = 'bi bi-volume-up';
-            this.childNodes[1].nodeValue = ' Pause Audio';
-        }
-    });
-
-    document.getElementById('pause-video-btn').addEventListener('click', function(e) {
-        /* e.stopPropagation(); */
-        const icon = this.querySelector('i');
-        if (!vid.paused) {
-            vid.pause();
-            icon.className = 'bi bi-play-circle';
-            this.childNodes[1].nodeValue = ' Play Video';
-        } else {
-            vid.play();
-            icon.className = 'bi bi-pause-circle';
-            this.childNodes[1].nodeValue = ' Pause Video';
-        }
-    });
-</script>
-
-  </body>
-
-<footer>
-        <p>We bring the world to you</p>
-        <p>&copy; 2025 Pawluk Web Solutions</p>
-</footer>
 </html>
